@@ -1,0 +1,17 @@
+22:17:51 **** Incremental Build of configuration Debug for project SPI ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F401RCTx -c -I../Inc -I"D:/courses/Done/Embedded & Electronics/Mastering Microcontroller and Embedded Driver Development/Drivers/code_updates/3-SPI/SPI/Driver/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "SPI.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\courses\Done\Embedded & Electronics\Mastering Microcontroller and Embedded Driver Development\Drivers\code_updates\3-SPI\SPI\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SPI.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SPI.elf
+ 
+arm-none-eabi-size   SPI.elf 
+arm-none-eabi-objdump -h -S  SPI.elf  > "SPI.list"
+arm-none-eabi-objcopy  -O ihex  SPI.elf  "SPI.hex"
+   text	   data	    bss	    dec	    hex	filename
+    656	      8	   1568	   2232	    8b8	SPI.elf
+Finished building: default.size.stdout
+ 
+Finished building: SPI.list
+Finished building: SPI.hex
+ 
+ 

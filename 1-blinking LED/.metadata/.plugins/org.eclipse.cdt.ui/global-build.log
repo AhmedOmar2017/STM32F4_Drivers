@@ -1,0 +1,14 @@
+23:55:51 **** Incremental Build of configuration Debug for project Blinked_LED ****
+make -j12 all 
+arm-none-eabi-size   Blinked_LED.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2436	      8	   1568	   4012	    fac	Blinked_LED.elf
+Finished building: default.size.stdout
+ 
+23:55:59 **** Incremental Build of configuration Debug for project Blinked_LED ****
+make -j12 all 
+arm-none-eabi-size   Blinked_LED.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2436	      8	   1568	   4012	    fac	Blinked_LED.elf
+Finished building: default.size.stdout
+ 

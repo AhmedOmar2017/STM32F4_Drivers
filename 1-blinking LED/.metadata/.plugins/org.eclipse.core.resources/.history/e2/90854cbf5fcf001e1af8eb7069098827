@@ -1,0 +1,48 @@
+#include "HAL.h"
+
+
+
+void delay(void){
+	for(uint32_t i = 0; i < 500000; i++);
+}
+
+
+int main(void){
+	GPIO_Handle  GpioLed,Gpiobtu;
+	GpioLed.pGPIOx = GPIOB;
+	Gpiobtu.pGPIOx = GPIOA;
+
+
+	GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_0;
+	GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
+	GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_LOW;
+	GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+	GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+	GPIO_PeriClockControl(GPIOB, ENABLE);
+	GPIO_INIT(&GpioLed);
+
+
+	Gpiobtu.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_2;
+	Gpiobtu.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IT_FT;
+	Gpiobtu.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_LOW;
+	Gpiobtu.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_PU;
+
+	GPIO_IRQConfig(IRQ_NO_EXTI0, 15, ENABLE);
+
+	GPIO_PeriClockControl(GPIOA, ENABLE);
+	GPIO_INIT(&Gpiobtu);
+	/*while(1){
+		if(GPIO_ReadFromInputPin(GPIOA, GPIO_PIN_NO_2) == 0){
+			GPIO_ToggleOutputPin(GPIOB, GPIO_PIN_NO_0);
+			delay();
+		}
+	}*/
+	return 0;
+
+}
+
+
+void EXTI0_IRQHandler(void){
+	GPIO_IRQHandling(GPIO_PIN_NO_2);
+	GPIO_ToggleOutputPin(GPIOB, GPIO_PIN_NO_0);
+}
