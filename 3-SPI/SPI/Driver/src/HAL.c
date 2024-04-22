@@ -314,24 +314,34 @@ void SPI_INIT(SPI_Handle_t *pSPI_Handle){
     // the first lets configure the Sip_cr1 reg
     uint32_t tempreg = 0;
     //1. configure the device mode 
-    tempreg |= pSPI_Handle->SPI_Config.SPI_DeviceMode << 2;
+    tempreg |= pSPI_Handle->SPI_Config.SPI_DeviceMode << SPI_CR1_MSTR;
 
     //2. configure the bus config 
     if(pSPI_Handle->SPI_Config.SPI_BusConfig == SPI_fULL_DUPLEX){
         // bidiraction mode should be cleared
-        tempreg &= ~(1 << 15);
+        tempreg &= ~(1 << SPI_CR1_BDIMODE);
     }else if (pSPI_Handle->SPI_Config.SPI_BusConfig == SPI_HALF_DUPLEX){
        // bidiraction mode should be set
-        tempreg |= (1 << 15);
+        tempreg |= (1 << SPI_CR1_BDIMODE);
     }else if (pSPI_Handle->SPI_Config.SPI_BusConfig == SPI_SIMPLE_RXONLY){
          // bidiraction mode should be cleared
-         tempreg &= ~(1 << 15);
+         tempreg &= ~(1 << SPI_CR1_BDIMODE);
          // RXONLY bit mast be set.
-         tempreg |= (1 << 10);
-
+         tempreg |= (1 << SPI_CR1_RXONLY);
     }
+    //3.configure SPI_sclkSpeed
+      tempreg |= pSPI_Handle->SPI_Config.SPI_sclkSpeed << SPI_CR1_BR;
+    // 4. configure SPI_DFF
+      tempreg |= pSPI_Handle->SPI_Config.SPI_DFF << SPI_CR1_DFF;
+    // 5. configure SPI_CPOL
+      tempreg |= pSPI_Handle->SPI_Config.SPI_CPOL << SPI_CR1_CPOL;
+    // 6. configure SPI_CPHA  
+      tempreg |= pSPI_Handle->SPI_Config.SPI_CPHA <<  SPI_CR1_CPHA;
+     //7. configure SPI_SSM
+      tempreg |= pSPI_Handle->SPI_Config.SPI_SSM << SPI_CR1_SSM;
 
-     
+      // initialzation for CR1
+      pSPI_Handle->pSPIx->SPI_CR1 = tempreg;
 }
 void SPI_DE_INIT(SPI_RegDef_t *pSPIOx);
 /*
