@@ -9,3 +9,6 @@
 ../Driver/src/HAL.c:212:6:GPIO_IRQConfig	24	static
 ../Driver/src/HAL.c:237:6:GPIO_IRQHandling	16	static
 ../Driver/src/HAL.c:271:6:SPI_PeriClockControl	16	static
+../Driver/src/HAL.c:313:6:SPI_INIT	24	static
+../Driver/src/HAL.c:352:9:Spi_GetFlagStatus	16	static
+../Driver/src/HAL.c:381:6:SPI_SendData	24	static

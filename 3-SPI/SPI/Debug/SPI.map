@@ -77,11 +77,17 @@ Discarded input sections
                 0x0000000000000000       0x40 ./Driver/src/HAL.o
  .text.SPI_PeriClockControl
                 0x0000000000000000      0x110 ./Driver/src/HAL.o
- .debug_info    0x0000000000000000      0x801 ./Driver/src/HAL.o
- .debug_abbrev  0x0000000000000000      0x175 ./Driver/src/HAL.o
+ .text.SPI_INIT
+                0x0000000000000000       0xac ./Driver/src/HAL.o
+ .text.Spi_GetFlagStatus
+                0x0000000000000000       0x26 ./Driver/src/HAL.o
+ .text.SPI_SendData
+                0x0000000000000000       0x6e ./Driver/src/HAL.o
+ .debug_info    0x0000000000000000      0x96a ./Driver/src/HAL.o
+ .debug_abbrev  0x0000000000000000      0x1d1 ./Driver/src/HAL.o
  .debug_aranges
-                0x0000000000000000       0x70 ./Driver/src/HAL.o
- .debug_ranges  0x0000000000000000       0x60 ./Driver/src/HAL.o
+                0x0000000000000000       0x88 ./Driver/src/HAL.o
+ .debug_ranges  0x0000000000000000       0x78 ./Driver/src/HAL.o
  .debug_macro   0x0000000000000000      0x16d ./Driver/src/HAL.o
  .debug_macro   0x0000000000000000      0xa72 ./Driver/src/HAL.o
  .debug_macro   0x0000000000000000       0x22 ./Driver/src/HAL.o
@@ -108,12 +114,12 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x35 ./Driver/src/HAL.o
  .debug_macro   0x0000000000000000       0x20 ./Driver/src/HAL.o
  .debug_macro   0x0000000000000000       0x16 ./Driver/src/HAL.o
- .debug_macro   0x0000000000000000       0xe2 ./Driver/src/HAL.o
+ .debug_macro   0x0000000000000000      0x263 ./Driver/src/HAL.o
  .debug_macro   0x0000000000000000      0x3eb ./Driver/src/HAL.o
- .debug_line    0x0000000000000000      0xaa6 ./Driver/src/HAL.o
- .debug_str     0x0000000000000000     0x90fa ./Driver/src/HAL.o
+ .debug_line    0x0000000000000000      0xb8c ./Driver/src/HAL.o
+ .debug_str     0x0000000000000000     0x95a1 ./Driver/src/HAL.o
  .comment       0x0000000000000000       0x51 ./Driver/src/HAL.o
- .debug_frame   0x0000000000000000      0x1c8 ./Driver/src/HAL.o
+ .debug_frame   0x0000000000000000      0x23c ./Driver/src/HAL.o
  .ARM.attributes
                 0x0000000000000000       0x2e ./Driver/src/HAL.o
  .group         0x0000000000000000        0xc ./Src/main.o
@@ -171,7 +177,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x35 ./Src/main.o
  .debug_macro   0x0000000000000000       0x20 ./Src/main.o
  .debug_macro   0x0000000000000000       0x16 ./Src/main.o
- .debug_macro   0x0000000000000000       0xe2 ./Src/main.o
+ .debug_macro   0x0000000000000000      0x263 ./Src/main.o
  .debug_macro   0x0000000000000000      0x3eb ./Src/main.o
  .group         0x0000000000000000        0xc ./Src/syscalls.o
  .group         0x0000000000000000        0xc ./Src/syscalls.o
@@ -689,10 +695,10 @@ LOAD c:/st/stm32cubeide_1.9.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x0000000000000000      0x59a ./Src/main.o
  .debug_line    0x000000000000059a       0x84 ./Startup/startup_stm32f401rctx.o
 
-.debug_str      0x0000000000000000     0x8b54
- .debug_str     0x0000000000000000     0x8b23 ./Src/main.o
-                                       0x8d05 (size before relaxing)
- .debug_str     0x0000000000008b23       0x31 ./Startup/startup_stm32f401rctx.o
+.debug_str      0x0000000000000000     0x8f3a
+ .debug_str     0x0000000000000000     0x8f09 ./Src/main.o
+                                       0x90eb (size before relaxing)
+ .debug_str     0x0000000000008f09       0x31 ./Startup/startup_stm32f401rctx.o
                                          0xb7 (size before relaxing)
 
 .comment        0x0000000000000000       0x50

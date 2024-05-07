@@ -347,7 +347,59 @@ void SPI_DE_INIT(SPI_RegDef_t *pSPIOx);
 /*
  * Data send and Recieve.
 */
-void SPI_SendData(SPI_RegDef_t *pSPIOx, uint8_t *pTxBuffer, uint32_t Len); 
+
+
+uint8_t Spi_GetFlagStatus(SPI_RegDef_t *pSPIx, uint32_t FlagName){
+    if(pSPIx ->SPI_SR & FlagName){
+        return FLAG_SET;
+    }
+    return FLAG_RESET;
+}
+
+
+
+
+/************************************************************************
+ * @fn              -SPI_SendData
+ * 
+ * @brief            - This function use to send  SPI PORT
+ * @Param[in]        -  Base address of GPIO Peripheral.{SPI1,SPI2, SPI3, SPI4}
+ * @Param[in]        -  ENABLE or DISABLE Macro
+ *
+ * 
+ * @return           -  None
+ *  
+ * @Note             -  This blocking call 
+ * 
+ */
+/*
+ * Periphral Clock Setup
+ */
+
+
+
+void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len){
+     while(Len > 0){
+        //1. wait until TXE Is set
+        while(Spi_GetFlagStatus(pSPIx, SPI_SR_TXE_FLAG) == FLAG_RESET);  // first method
+       // while(!(pSPIx -> SPI_SR & (SPI_SR_TXE << 1)));                // secand method
+       // 2. CHECK DFF bit in cr1
+       if ((pSPIx -> SPI_CR1 & (1 << SPI_CR1_DFF))){
+        // 16 BIT DFF
+        // 1. load the data in the dr register
+        pSPIx -> SPI_DR = *((uint16_t*)pTxBuffer);
+        Len--;
+        Len--;
+        (uint16_t*)pTxBuffer++;
+       }else{
+        // 8 bit DFF
+        pSPIx -> SPI_DR = *pTxBuffer;
+         Len--;
+         pTxBuffer++;
+       }
+       
+     }
+} 
 void SPI_RecieveData(SPI_RegDef_t *pSPIOx, uint8_t *pTxBuffer, uint32_t Len); 
 
 /*
