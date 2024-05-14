@@ -70,7 +70,6 @@ int main(void)
    //Enable the spi     
    SPI_PeriControl(SPI2, ENABLE);
    SPI_SendData(SPI2, (uint8_t*)user_data, strlen(user_data));
-   SPI_PeriControl(SPI2, DISABLE);
 
    while (1);
   

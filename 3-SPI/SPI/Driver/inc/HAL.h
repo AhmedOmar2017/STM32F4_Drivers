@@ -123,8 +123,8 @@ void SPI_RecieveData(SPI_RegDef_t *pSPIOx, uint8_t *pTxBuffer, uint32_t Len);
  */
 void SPI_IRQConfig(uint8_t IRQNumber, uint32_t IRQPriorty, uint8_t EnorDi);
 void SPI_IRQHandling(SPI_Handle_t *pHandle);
-
-
+void SPI_PeriControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi); 
+void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
 #endif /*END SPI  API*/
 
 #endif/*END STM32F401*/

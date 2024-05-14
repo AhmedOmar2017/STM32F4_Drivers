@@ -1,6 +1,6 @@
 #ifndef CONFIGRATION_H_ 
 #define CINFIGRATION_H_
-
+#include <string.h>
 #include <stdint.h>
 #include <string.h>
 #define STM32F401           1              // Activate Definiation of stm32f401

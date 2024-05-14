@@ -85,6 +85,8 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi)
 void GPIO_INIT(GPIO_Handle *pGPIO_Handle)
 {
     uint32_t temp = 0;
+    //0. Enable_prepheral_clock
+    GPIO_PeriClockControl(pGPIO_Handle->pGPIOx, ENABLE);
     //1. Configure the mode of gpio pin
     if(pGPIO_Handle->GPIO_PinConfig.GPIO_PinMode <= GPIO_MODE_ANALOG){
         // non intruppt mode
@@ -311,6 +313,8 @@ void SPI_PeriClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi){
  * Periphral Clock Setup
  */
 void SPI_INIT(SPI_Handle_t *pSPI_Handle){
+    //0. Enable_prepheral_clock
+    SPI_PeriClockControl(pSPI_Handle->pSPIx, ENABLE);
     // the first lets configure the Sip_cr1 reg
     uint32_t tempreg = 0;
     //1. configure the device mode 
@@ -401,6 +405,23 @@ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len){
      }
 } 
 void SPI_RecieveData(SPI_RegDef_t *pSPIOx, uint8_t *pTxBuffer, uint32_t Len); 
+
+
+void SPI_PeriControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi){
+    if(EnorDi == ENABLE){
+        pSPIx->SPI_CR1 |= (1<< SPI_CR1_SPE);
+    }else{
+        pSPIx->SPI_CR1 &= ~(1<< SPI_CR1_SPE);
+    }
+}
+void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi){
+    if(EnorDi == ENABLE){
+        pSPIx->SPI_CR1 |= (1<< SPI_CR1_SSI);
+    }else{
+        pSPIx->SPI_CR1 &= ~(1<< SPI_CR1_SSI);
+    }
+}
+
 
 /*
  *  IRQ configration and ISR handling 

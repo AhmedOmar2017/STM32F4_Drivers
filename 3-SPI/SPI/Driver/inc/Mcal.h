@@ -14,15 +14,15 @@
 
    #define NO_PR_BITS_IMPLEMENTED               4
 
-   #define IRQ_NO_EXTI0			                6
-   #define IRQ_NO_EXTI1		                    7
-   #define IRQ_NO_EXTI2			                8
-   #define IRQ_NO_EXTI3			                9
-   #define IRQ_NO_EXTI4		   	      	        10
-   #define IRQ_NO_EXTI9_5		     	        23
-   #define IRQ_NO_EXTI15_10	               		40
-   #define INVIC_IRQ_PRI0			            0
-   #define INVIC_IRQ_PRI15			            15
+   #define IRQ_NO_EXTI0			                  6
+   #define IRQ_NO_EXTI1		                     7
+   #define IRQ_NO_EXTI2			                  8
+   #define IRQ_NO_EXTI3			                  9
+   #define IRQ_NO_EXTI4		   	               10
+   #define IRQ_NO_EXTI9_5		     	            23
+   #define IRQ_NO_EXTI15_10	              		40
+   #define INVIC_IRQ_PRI0			               0
+   #define INVIC_IRQ_PRI15			               15
 
    /**************************************************************************************************
     *
@@ -96,8 +96,8 @@
    #define WWDG_BASEADDR                                         (APB1PERIPH_BASE + 0x2C00U)                 /*<It is base address for WWDG periphral >*/
    #define IWDG_BASEADDR                                         (APB1PERIPH_BASE + 0x3000U)                 /*<It is base address for IWDG periphral >*/
    #define I2S2EXT_BASEADDR                                      (APB1PERIPH_BASE + 0x3400U)                 /*<It is base address for I2S2ext periphral >*/
-   #define SPI2_BASEADDR                	                     (APB1PERIPH_BASE + 0x3800U)                 /*<It is base address for SPI2 / I2S2 periphral >*/
-   #define SPI3_BASEADDR         		                         (APB1PERIPH_BASE + 0x3C00U)                 /*<It is base address for SPI3 / I2S3 periphral >*/
+   #define SPI2_BASEADDR                	                       (APB1PERIPH_BASE + 0x3800U)                 /*<It is base address for SPI2 / I2S2 periphral >*/
+   #define SPI3_BASEADDR         		                          (APB1PERIPH_BASE + 0x3C00U)                 /*<It is base address for SPI3 / I2S3 periphral >*/
    #define I2S3EXT_BASEADDR                                      (APB1PERIPH_BASE + 0x4000U)                 /*<It is base address for I2S3ext periphral >*/
    #define USART2_BASEADDR                                       (APB1PERIPH_BASE + 0x4400U)                 /*<It is base address for USART2 periphral >*/
    #define I2C1_BASEADDR                                         (APB1PERIPH_BASE + 0x5400U)                 /*<It is base address for I2C1 periphral >*/
