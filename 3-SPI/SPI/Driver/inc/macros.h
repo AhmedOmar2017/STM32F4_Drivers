@@ -153,8 +153,8 @@
  *@SPI_CPOL
 */
 
-#define SPI_CPOL_HIGH                   0
-#define SPI_CPOL_LOW                    1
+#define SPI_CPOL_HIGH                   1
+#define SPI_CPOL_LOW                    0 // First error
 
 
 
@@ -162,8 +162,8 @@
  *@SPI_CPHA
 */
 
-#define SPI_CPHA_HIGH                   0
-#define SPI_CPHA_LOW                    1
+#define SPI_CPHA_HIGH                   1
+#define SPI_CPHA_LOW                    0  // First error 
 
 
 /*

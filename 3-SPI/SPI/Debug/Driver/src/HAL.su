@@ -14,3 +14,4 @@
 ../Driver/src/HAL.c:385:6:SPI_SendData	24	static
 ../Driver/src/HAL.c:410:6:SPI_PeriControl	16	static
 ../Driver/src/HAL.c:417:6:SPI_SSIConfig	16	static
+../Driver/src/HAL.c:427:6:SPI_SSOEConfig	16	static

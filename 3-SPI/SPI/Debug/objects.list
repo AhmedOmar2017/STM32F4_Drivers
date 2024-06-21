@@ -1,5 +1,5 @@
 "./Driver/src/HAL.o"
-"./Src/main.o"
+"./Src/StmToArduino.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f401rctx.o"

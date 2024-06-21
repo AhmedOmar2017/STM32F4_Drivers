@@ -15,8 +15,6 @@
  *
  ******************************************************************************
  */
-
-#include <stdint.h>
 #include "HAL.h"
 
 
@@ -25,12 +23,13 @@
 // Spi2  sck--> PB13
 // spi2 nss--> PB12
 // Alt func-->AF05
-SPI2_GPIO_Init(void){
+void SPI2_GPIO_Init(void){
 	GPIO_Handle SPIPin;
+
 	SPIPin.pGPIOx = GPIOB;
 	SPIPin.GPIO_PinConfig.GPIO_PinMode              = GPIO_MODE_ALTFN;
     SPIPin.GPIO_PinConfig.GPIO_PinAltFunMode        = 5;
-    SPIPin.GPIO_PinConfig.GPIO_PinOPType            = GPIO_OP_TYOE_PP;
+    SPIPin.GPIO_PinConfig.GPIO_PinOPType            = GPIO_OP_TYPE_PP; //= GPIO_OP_TYOE_PP; First rerror
     SPIPin.GPIO_PinConfig.GPIO_PinPuPdControl       = GPIO_NO_PUPD;
     SPIPin.GPIO_PinConfig.GPIO_PinSpeed             = GPIO_SPEED_FAST;
     SPIPin.GPIO_PinConfig.GPIO_PinNumber            = GPIO_PIN_NO_13;           // SPI2_SLK
@@ -46,7 +45,7 @@ SPI2_GPIO_Init(void){
 
 
 
-SPI2_INIT(void){
+void SPI2_INIT(void){
     SPI_Handle_t SPI2Handle;
     SPI2Handle.pSPIx = SPI2;
     SPI2Handle.SPI_Config.SPI_BusConfig         = SPI_fULL_DUPLEX;
@@ -61,7 +60,7 @@ SPI2_INIT(void){
 }
 int main(void)
 {
-    char user_data[] = "Hallo, world";
+    char user_data[] = "Hallo,world";
 
    SPI2_GPIO_Init();
    SPI2_INIT();
@@ -70,6 +69,7 @@ int main(void)
    //Enable the spi     
    SPI_PeriControl(SPI2, ENABLE);
    SPI_SendData(SPI2, (uint8_t*)user_data, strlen(user_data));
+   while (Spi_GetFlagStatus(SPI2,SPI_SR_BUSY_FLAG));
    SPI_PeriControl(SPI2, DISABLE);
 
    while (1);
